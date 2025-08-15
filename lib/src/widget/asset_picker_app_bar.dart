@@ -240,7 +240,7 @@ class AssetPickerAppBarWrapper extends StatelessWidget {
     required this.body,
   });
 
-  final AssetPickerAppBar appBar;
+  final PreferredSizeWidget appBar;
   final Widget body;
 
   @override

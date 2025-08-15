@@ -738,14 +738,20 @@ abstract class AssetPickerBuilderDelegate<Asset, Path> {
         children: <Widget>[
           ScaleText(
             textDelegate.unableToAccessAll,
-            style: const TextStyle(fontSize: 22),
+            style: const TextStyle(
+              fontSize: 22,
+              color: Colors.black,
+            ),
             textAlign: TextAlign.center,
             semanticsLabel: semanticsTextDelegate.unableToAccessAll,
           ),
           SizedBox(height: size.height / 30),
           ScaleText(
             textDelegate.accessAllTip,
-            style: const TextStyle(fontSize: 18),
+            style: const TextStyle(
+              fontSize: 18,
+              color: Colors.black,
+            ),
             textAlign: TextAlign.center,
             semanticsLabel: semanticsTextDelegate.accessAllTip,
           ),
@@ -758,7 +764,7 @@ abstract class AssetPickerBuilderDelegate<Asset, Path> {
       minWidth: size.width / 2,
       height: appBarItemHeight * 1.25,
       padding: const EdgeInsets.symmetric(horizontal: 24),
-      color: themeColor,
+      color: const Color.fromARGB(255, 94, 23, 235),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(5),
       ),
@@ -766,7 +772,10 @@ abstract class AssetPickerBuilderDelegate<Asset, Path> {
       materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
       child: ScaleText(
         textDelegate.goToSystemSettings,
-        style: const TextStyle(fontSize: 17),
+        style: const TextStyle(
+          fontSize: 17,
+          color: Colors.white,
+        ),
         semanticsLabel: semanticsTextDelegate.goToSystemSettings,
       ),
     );
@@ -1378,28 +1387,6 @@ class DefaultAssetPickerBuilderDelegate
                     !MediaQuery.accessibleNavigationOf(context)) {
                   child = GestureDetector(
                     excludeFromSemantics: true,
-                    onHorizontalDragStart: (d) {
-                      dragSelectCoordinator.onSelectionStart(
-                        context: context,
-                        globalPosition: d.globalPosition,
-                        index: index,
-                        asset: assets[index],
-                      );
-                    },
-                    onHorizontalDragUpdate: (d) {
-                      dragSelectCoordinator.onSelectionUpdate(
-                        context: context,
-                        globalPosition: d.globalPosition,
-                        constraints: constraints,
-                      );
-                    },
-                    onHorizontalDragCancel:
-                        dragSelectCoordinator.resetDraggingStatus,
-                    onHorizontalDragEnd: (d) {
-                      dragSelectCoordinator.onDragEnd(
-                        globalPosition: d.globalPosition,
-                      );
-                    },
                     onLongPressStart: (d) {
                       dragSelectCoordinator.onSelectionStart(
                         context: context,
